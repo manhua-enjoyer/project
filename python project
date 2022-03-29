@@ -1,18 +1,44 @@
-def computer_guessing(x):
+import random 
+
+your_choice = input("You guess (YG) or Bot guess (BG)?: ")
+
+
+
+
+def guessing():
+    special_number = random.randint(1, 10)
+    guessing = 0
+    while guessing != special_number:
+        guessing = int(input(f'Choose a number between 1 and {10}: '))
+        if guessing < special_number: 
+            print('Not quite there, a little low. ')
+        elif guessing > special_number:
+            print('Not quite there, a little high. ') 
+    print(f'Congratulations! You got the correct number: {special_number}')
+
+
+def computer_guessing():
     low = 1
-    high = x
+    high = 100
     response = ''
     while response != 'c':
         if low !=high:
             guess = random.randint(low, high)
         else:
             guess = low
-        response = input(f'Is {guess} too high(H), too low (L), or correct(C)??').lower()
+        response = input(f'Is {guess} too high(H), too low (L), or correct(C)??: ').lower()
         if response =='h':
             high = guess - 1
         elif response =='l':
             low = guess + 1
 
     print(f'nice job brotha, you guessed, {guess}, correctly!')
+  
 
-computer_guessing(10)
+    
+if your_choice == "YG":
+    guessing()
+elif your_choice == "BG":
+    computer_guessing()
+else:
+    print("Invalid answer")
